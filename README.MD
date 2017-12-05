@@ -22,7 +22,7 @@ Sports Catalog is an application that provides a list of items within a variety 
   1. Install Vagrant and VirtualBox
   2. Download or Clone [fullstack-nanodegree-vm](https://github.com/udacity/fullstack-nanodegree-vm) repository.
   3. Find the catalog folder and replace it with the content of this current repository, by either downloading or cloning it from
-  [Here](https://github.com/sagarchoudhary96/P5-Item-Catalog).
+  [Here](https://github.com/Salsatore89/catalog-items-udacity-project).
 
 #### Launch Project
   1. Launch the Vagrant VM using command:
