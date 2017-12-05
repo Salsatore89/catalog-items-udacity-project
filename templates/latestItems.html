@@ -1,0 +1,21 @@
+{% extends "main.html" %}
+{% block title %}{{ super() }}{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block breadcrumb %}{{ super() }}{% endblock %}
+{% block content %}
+    <h1>Latest items</h1>
+    <div class="list-group">
+    	{% for catalogItem in catalogItems %}
+      <div class="list-group-item flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+          <a href = "{{url_for('showItem', category_id = catalogItem.category_id, item_id = catalogItem.id)}}">
+            <h5>{{catalogItem.name}}</h5>
+          </a>
+      		<span>{{ catalogItem.category.name }}</span>
+        </div>
+      </div>
+    	{% endfor %}
+    </div>
+{% endblock %}

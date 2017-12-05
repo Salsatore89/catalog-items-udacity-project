@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% block title %}{{ super() }}{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block breadcrumb %}{{ super() }}{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-md-11 col-md-offset-1 padding-none">
+    <h1>Delete {{item.name}}</h1>
+  </div>
+</div>
+<h3> Are you sure you want to delete {{item.name}}? </h3>
+<form action="{{ url_for('deleteItem', category_id = category_id, item_id = item.id)}}" method = 'post'>
+	<button type="submit" class="btn btn-primary btn-sm" id="submit">Delete</button>
+  <a href = "{{url_for('showItems', category_id=category.id, item_id = item.id)}}" class="btn btn-secondary btn-sm">Cancel</a>
+</form>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "main.html" %}
+{% block breadcrumb %}
+{{ super() }}
+<li class="breadcrumb-item">
+ <a href="{{url_for('showItems', category_id = category.id )}}">{{categoryName}}</a>
+</li>
+{% endblock %}
+{% block content %}
+    <div class="header-categories">
+      <h1>{{categoryName}} items ({{categoryItemsNumber}})</h1>
+        {%if 'username' in session %}
+        <a href="{{url_for('newItem', category_id=category.id)}}" class="float-right add-item">
+          <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Add new item</button>
+        </a>
+        {% endif %}
+    </div>
+    <div class="list-group">
+      {% for categoryItem in categoryItems %}
+      <div class="list-group-item flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <a href="{{url_for('showItem', category_id = categoryItem.category_id, item_id = categoryItem.id)}}">
+              <h5 class="mb-1">{{categoryItem.name}}</h5>
+            </a>
+        <p class="mb-1">
+          {%if 'username' in session %}
+            <a href="{{url_for('editItem', category_id=category.id, item_id=categoryItem.id)}}" class="btn btn-primary btn-sm">Edit</a>
+            <a href="{{url_for('deleteItem', category_id=category.id, item_id=categoryItem.id)}}" class="btn btn-secondary btn-sm">Delete</a>
+          {% endif %}
+        </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+{% endblock %}

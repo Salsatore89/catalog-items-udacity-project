@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+{% block title %}{{ super() }}{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block breadcrumb %}
+{{ super() }}
+<li class="breadcrumb-item">
+  <a href="{{ url_for('showItems', category_id = category.id) }}">{{category.name}}</a>
+</li>
+<li class="breadcrumb-item active">
+  <a href="{{ url_for('newItem', category_id = category.id) }}">New item</a>
+</li>
+{% endblock %}
+{% block content %}
+<div class="row banner menu">
+  <div class="col-md-11 col-md-offset-1 padding-none">
+    <h1>New {{category.name}} item</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-1 padding-top">
+    <form action="{{ url_for('newItem', category_id = category.id) }}" method = "post">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type ="text" maxlength="100" class="form-control" name="name" placeholder="New item name">
+        <label for="description">Description:</label>
+        <textarea class="form-control" maxlength="1000" rows="5" name="description" placeholder="New item description"></textarea>
+        <button type="submit" class="btn btn-primary btn-sm" id="submit">Create</button>
+        <a href = "{{url_for('showItems', category_id = category.id)}}" class="btn btn-secondary btn-sm">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "main.html" %}
+{% block breadcrumb %}
+<li class="breadcrumb-item">
+  <a href="{{url_for('showItems', category_id = category.id )}}">{{categoryName}}</a>
+</li>
+<li class="breadcrumb-item active">
+  <a href="{{url_for('showItem', category_id = category.id, item_id = categoryItem.id )}}">{{categoryItem.name}}</a>
+</li>
+{% endblock %}
+{% block content %}
+	<div class="row">
+		<div class="">
+			<div class="">
+				<h1>{{categoryItem.name}}</h1>
+				<p>{{categoryItem.description}}</p>
+        {%if 'username' in session %}
+        <a href="{{url_for('editItem', category_id = category.id, item_id = categoryItem.id)}}" class="btn btn-primary btn-sm">Edit</a>
+        <a href = "{{url_for('deleteItem', category_id = category.id, item_id = categoryItem.id)}}" class="btn btn-secondary btn-sm">Delete</a>
+        {%endif%}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
